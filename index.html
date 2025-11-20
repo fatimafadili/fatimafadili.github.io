@@ -1,1 +1,443 @@
-index.html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fatima El Fadili - Portfolio</title>
+    <style>
+        /* === VARIABLES ET STYLES GLOBAUX === */
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --accent: #f093fb;
+            --dark: #2d3748;
+            --light: #f7fafc;
+            --text: #4a5568;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        /* === HEADER ET NAVIGATION === */
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff10"><polygon points="1000,0 1000,100 0,100"/></svg>');
+            background-size: cover;
+        }
+
+        .profile-container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid white;
+            margin: 0 auto 1rem;
+            background: linear-gradient(45deg, var(--accent), var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .name {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .title {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        /* === SECTIONS === */
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: var(--dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+        }
+
+        /* === COMPÉTENCES === */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-list li::before {
+            content: '▸';
+            color: var(--accent);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        /* === PROJETS === */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .project-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-body {
+            padding: 1.5rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tech-tag {
+            background: var(--light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        /* === CONTACT === */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* === ANIMATIONS === */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            .section {
+                padding: 2rem 1rem;
+            }
+            
+            .name {
+                font-size: 2rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="profile-container">
+            <div class="profile-pic">👩‍💻</div>
+            <h1 class="name">Fatima El Fadili</h1>
+            <p class="title">Étudiante Ingénieure IA & Data Science</p>
+            <p>ENSAM Meknès - À la recherche d'un stage PFE</p>
+        </div>
+    </header>
+
+    <!-- COMPÉTENCES -->
+    <section class="section fade-in">
+        <h2 class="section-title">🛠 Compétences Techniques</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>🤖 Intelligence Artificielle</h3>
+                <ul class="skill-list">
+                    <li>Machine Learning & Deep Learning</li>
+                    <li>Natural Language Processing (NLP)</li>
+                    <li>Computer Vision & OpenCV</li>
+                    <li>TensorFlow & PyTorch</li>
+                    <li>LLM & Transformers</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h3>💻 Développement</h3>
+                <ul class="skill-list">
+                    <li>Python, JavaScript, PHP</li>
+                    <li>React, Node.js, Laravel</li>
+                    <li>APIs REST & Microservices</li>
+                    <li>Bases de données SQL/NoSQL</li>
+                    <li>Git, Docker, DevOps</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h3>📊 Data Science</h3>
+                <ul class="skill-list">
+                    <li>Analyse de données & Visualisation</li>
+                    <li>Pandas, NumPy, Scikit-learn</li>
+                    <li>Machine Learning Opérationnel</li>
+                    <li>Big Data & Traitement parallèle</li>
+                    <li>Statistiques & Mathématiques</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJETS IA -->
+    <section class="section fade-in" style="background: var(--light);">
+        <h2 class="section-title">🚀 Projets d'Intelligence Artificielle</h2>
+        <div class="projects-grid">
+            <!-- Projet 1 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">🧪</div>
+                    <h3>Génération Automatique de Tests</h3>
+                </div>
+                <div class="project-body">
+                    <p>Système de génération de cas de test utilisant des LLMs pour transformer des spécifications en scénarios de test exécutables.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">LLM</span>
+                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">Spring Boot</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projet 2 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">⚙️</div>
+                    <h3>Maintenance Prédictive</h3>
+                </div>
+                <div class="project-body">
+                    <p>Solution IA de détection d'anomalies et prédiction de pannes pour équipements industriels avec analyse de données capteurs.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">IoT</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Data Analysis</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projet 3 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">👁️</div>
+                    <h3>Détection de Fatigue</h3>
+                </div>
+                <div class="project-body">
+                    <p>Système de vision par ordinateur pour détecter la fatigue et les comportements à risque en temps réel.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">OpenCV</span>
+                        <span class="tech-tag">MediaPipe</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Deep Learning</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projet 4 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">🔍</div>
+                    <h3>Plagiarism Checker IA</h3>
+                </div>
+                <div class="project-body">
+                    <p>Plateforme de détection de similarités textuelles avec explications intelligentes utilisant RAG et transformers.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Transformers</span>
+                        <span class="tech-tag">RAG</span>
+                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">ChromaDB</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section fade-in">
+        <h2 class="section-title">📞 Contact</h2>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📧</div>
+                <h3>Email</h3>
+                <p>fatimafadili10987654321@gmail.com</p>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">📱</div>
+                <h3>Téléphone</h3>
+                <p>+212 679 223 189</p>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">💼</div>
+                <h3>LinkedIn</h3>
+                <p>linkedin.com/in/fatima-el-fadili</p>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">🐙</div>
+                <h3>GitHub</h3>
+                <p>github.com/fatimafadili</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Animation au défilement
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Appliquer l'animation à toutes les sections
+        document.querySelectorAll('.fade-in').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'all 0.6s ease-out';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
